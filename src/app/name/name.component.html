@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="searchByFirstName()">
+  <div class="form-group">
+    <label>Search By First Name</label>
+    <input formControlName="firstname" id="firstname" type="text" class="form-control">
+    <div *ngIf="firstname.touched && firstname.invalid" class="alert alert-danger">
+      <div *ngIf="firstname.errors.required">First Name is Required</div>
+      <div *ngIf="firstname.errors.cannotContainSpace">Name cannot Contain Spaces</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Search</button>
+</form>
+<div style="margin-bottom: 10px"></div>
+
+<app-common-person *ngIf="persons" [personList]="persons"></app-common-person>
